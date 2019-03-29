@@ -1,0 +1,53 @@
+*********** VANILLA JDBC APP ***********
+
+create database people;
+use people;
+
+CREATE TABLE IF NOT EXISTS jdbc_employees (
+    id INT AUTO_INCREMENT,
+    first VARCHAR(55) NOT NULL,
+    last  VARCHAR(55),
+    age INT,
+    PRIMARY KEY (id)
+);
+
+insert into jdbc_employees values(1, 'firstName1', 'lastName1', 57);
+insert into jdbc_employees values(2, 'firstName2', 'lastName2', 58);
+insert into jdbc_employees values(3, 'firstName3', 'lastName3', 59);
+insert into jdbc_employees values(4, 'firstName4', 'lastName4', 55);
+
+--------------------------------------------------------------------
+Testing BLOBS:
+
+--> CREATE TABLE XML_Data (id INTEGER, Data LONG);
+--> added XML file to project for upload to database
+ 
+ --------------------------------------------------------------------
+ Rollbacks and Commits
+ 
+ https://www.tutorialspoint.com/jdbc/jdbc-transactions.htm
+ 
+ Add autocommit propety in my.cnf configuration file in MySQL installation:
+ autocommit=0
+ 
+ --------------------------------------------------------------------
+ TYPES:
+ 
+ https://www.tutorialspoint.com/jdbc/jdbc-data-types.htm
+ --------------------------------------------------------------------
+ WAS NULL FUCNTION
+ 
+ If database entries are NULL, then jdbc loads these into Java with the
+ default values, eg. 0 for a number, false for a boolean.....etc 
+ 
+ I guess this is more relevant pre-autoboxing, or if there is no NOT NULL
+ constraint against the db column, but it corresponds to a Java primitive 
+ property.
+ 
+ - insert into jdbc_employees values (2000, 'cagey', 'Joe', null);
+ - resultSet.wasNull()
+  
+ --------------------------------------------------------------------
+ 
+ 
+ 
